@@ -1,0 +1,8 @@
+Changes
+lib/DBQuery.pm
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+README
+t/DBQuery.t
+META.yml                                 Module meta-data (added by MakeMaker)
