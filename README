@@ -1,5 +1,5 @@
-DBQuery version 0.01
-====================
+DBQuery version 0.02
+===============
 
 The README is used to introduce the module and provide instructions on
 how to install the module, any machine dependencies it may have (for
@@ -26,13 +26,20 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   DBI
-  DBD::mysql
+  DBD:mysql
   DBD::PgSQL
   DBD::Oracle
 
 COPYRIGHT AND LICENCE
 
-Put the correct copyright and licence information here.
+for Yahoo. and Alibaba.
+
+HELP
+
+You can get help from the order:
+
+pod2text lib/DBQuery.pm
+perldoc lib/DBQuery.pm
 
 Copyright (C) 2009 by cnangel
 

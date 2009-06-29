@@ -13,3 +13,18 @@ BEGIN { use_ok('DBQuery') };
 # Insert your test code below, the Test::More module is use()ed here so read
 # its man page ( perldoc Test::More ) for help writing this test script.
 
+use t::DBQuery;
+plan tests => 3 * block();
+
+run_tests();
+
+__DATA__
+
+=== TEST 1: no home
+--- no_home
+--- args: ls *
+--- err 
+Can't find the home for the current user.
+--- out 
+--- status: 2
+
