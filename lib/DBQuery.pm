@@ -4,7 +4,7 @@ package DBQuery;
 
 use DBI;
 
-$DBQuery::VERSION = "1.000";
+$DBQuery::VERSION = "1.001";
 
 sub new
 {
@@ -61,7 +61,7 @@ sub connect
 		$self->{dbh} = DBI->connect($self->{dsn}, $self->{user}, $self->{pass}, {'RaiseError' => 1});
 	}
 
-	if ($DB->{driver_name} eq 'mysql') {
+	if ($self->{driver} eq 'mysql') {
 		$self->{dbh}->{mysql_auto_reconnect} = $self->{pconnect} ? 1 : 0;
 		$self->{dbh}->{mysql_enable_utf8} = $self->{utf8} ? 1 : 0;
 		$self->{dbh}->{mysql_no_autocommit_cmd} = $self->{autocommit} ? 0 : 1;
@@ -206,9 +206,9 @@ Simple query:
 Common:
 
     my $query = $db->query("select url from edb.white_black_grey where spamtype=':demote2:' limit 10;");
-    while (my $row = $db->fetch_array($query))
+    while (my @row = $db->fetch_array($query))
     {
-    	print Dumper $row, "\n";
+    	print Dumper @row, "\n";
     }
 
 =item B<Disconnect>
@@ -315,11 +315,17 @@ If you have a branch for me to pull, please let me know ;)
 
 =head1 TODO
 
+To this:
+
 =over
 
 =item *
 
 Sqlite2 and sqlite3 will be supported.
+
+=item *
+
+New engine for DBQuery.
 
 =back
 
@@ -357,7 +363,7 @@ Neither the name of the Alibaba Search Center, Alibaba Inc. nor the names of its
 
 =head1 AUTHOR 
 
-B<Cnangel> (I<junliang.li@alibaba-inc.com>)
+B<Cnangel> (I<junliang.li#alibaba-inc.com>)
 
 =head1 HISTORY
 
