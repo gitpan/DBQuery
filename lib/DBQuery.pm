@@ -4,7 +4,7 @@ package DBQuery;
 
 use DBI;
 
-$DBQuery::VERSION = "1.101";
+$DBQuery::VERSION = "1.105";
 
 sub new
 {
@@ -93,6 +93,12 @@ sub quote
 {
 	my $self = shift;
 	return $self->{dbh}->quote($_[0]);
+}
+
+sub insert_id
+{
+	my $self = shift;
+	return $self->{dbh}->{'mysql_insertid'};
 }
 
 sub fetch_array
@@ -282,6 +288,10 @@ Fetch and return reference of hash.
 
 Quote some characters.
 
+=head2 $self->insert_id()
+
+Return last insert id.
+
 =head1 TIPS
 
 There's some extra tips found in our own's everyday use:
@@ -382,7 +392,7 @@ Neither the name of the Alibaba Search Center, Alibaba Inc. nor the names of its
 
 =head1 AUTHOR 
 
-B<Cnangel> (I<junliang.li#alibaba-inc.com>)
+B<Cnangel> (I<cnangel@gmail.com>)
 
 =head1 HISTORY
 
